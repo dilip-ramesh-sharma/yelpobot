@@ -9,10 +9,13 @@ import math
 import toml  # Install using pip install toml
 
 # Load Snowflake credentials from .toml file
-snowflake_credentials = toml.load("snowflake_credentials.toml")
+# snowflake_credentials = toml.load("snowflake_credentials.toml")
 
 # Database connection function
 def load_data(query):
+
+    snowflake_credentials = st.secrets["snowflake"]
+    
     conn = snowflake.connector.connect(
         user=snowflake_credentials["snowflake"]["user"],
         password=snowflake_credentials["snowflake"]["password"],
